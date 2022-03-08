@@ -1,5 +1,13 @@
-<div #myDiv [class]="titleClass">{{title + ' ' + getSalary() + '$'}}</div>
-<img [src]="imgSrc" [style.width.%]="width" alt="" (click)="getImgSrc(imgSrc, $event)">
-<input #myInput (input)="searchText(myInput.value, myDiv)">
-{{user?.info?.male}}
-<div [innerHTML]="tag" ></div>
+<ngx-classwork-header></ngx-classwork-header>
+<ngx-classwork-navbar navTitle="Nav list" [navCaption]="navCaption">
+	<mat-list role="list">
+		<mat-list-item role="listitem">Item 1</mat-list-item>
+		<mat-list-item role="listitem">Item 2</mat-list-item>
+		<mat-list-item role="listitem">Item 3</mat-list-item>
+	</mat-list>
+	<mat-form-field class="example-full-width" appearance="fill">
+		<mat-label>Search</mat-label>
+		<input matInput (input)="onInput($event)" />
+	</mat-form-field>
+</ngx-classwork-navbar>
+<!-- <p>User: {{user}}</p> -->
