@@ -1,0 +1,14 @@
+<mat-drawer-container class="example-container" autosize>
+	<mat-drawer #drawer class="example-sidenav" mode="side">
+		<p #drawer>{{ navTitle }}</p>
+		<p>{{ navCaption }}</p>
+		<ng-content select="mat-list"></ng-content>
+	</mat-drawer>
+
+	<div class="example-sidenav-content">
+		<ng-content></ng-content>
+		<!-- <button type="button" mat-button (click)="drawer.toggle()">
+        Toggle sidenav
+      </button> -->
+	</div>
+</mat-drawer-container>
