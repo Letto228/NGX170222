@@ -1,8 +1,10 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 
 @Component({
 	selector: 'ngx-classwork-header',
 	templateUrl: './header.component.html',
 	styleUrls: ['./header.component.css'],
 })
-export class HeaderComponent {}
+export class HeaderComponent {
+	@Output() clickMenu = new EventEmitter<void>();
+}

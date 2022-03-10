@@ -1,10 +1,12 @@
-<ngx-classwork-header></ngx-classwork-header>
-<ngx-classwork-navbar navTitle="Nav list" [navCaption]="navCaption">
-	<mat-list role="list">
-		<mat-list-item role="listitem">Item 1</mat-list-item>
-		<mat-list-item role="listitem">Item 2</mat-list-item>
-		<mat-list-item role="listitem">Item 3</mat-list-item>
-	</mat-list>
+<ngx-classwork-header (clickMenu)="onMenuToggle()"></ngx-classwork-header>
+<ngx-classwork-navbar [navTitle]="navCaption">
+	<ng-template #matListTemplate>
+		<mat-list role="list">
+			<mat-list-item role="listitem">Item 1</mat-list-item>
+			<mat-list-item role="listitem">Item 2</mat-list-item>
+			<mat-list-item role="listitem">Item 3</mat-list-item>
+		</mat-list>
+	</ng-template>
 	<mat-form-field class="example-full-width" appearance="fill">
 		<mat-label>Search</mat-label>
 		<input matInput (input)="onInput($event)" />

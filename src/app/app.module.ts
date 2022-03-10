@@ -12,6 +12,7 @@ import { MatInputModule } from '@angular/material/input';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
+import { OnPushComponent } from './components/on-push/on-push.component';
 
 //@ts-ignore
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -25,7 +26,7 @@ const baseURL = environment.baseUrl;
  */
 
 @NgModule({
-	declarations: [AppComponent, HeaderComponent, NavbarComponent],
+	declarations: [AppComponent, HeaderComponent, NavbarComponent, OnPushComponent],
 	imports: [
 		BrowserModule,
 		BrowserAnimationsModule,
