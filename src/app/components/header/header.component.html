@@ -10,10 +10,7 @@
 	<span>App</span>
 	<span class="example-spacer"></span>
 
-	<div
-		*ngxClassworkInsert="false; first summ; last spiner"
-	></div>
-
+	<div *ngxClassworkInsert="false; first: summ; last: spiner"></div>
 
 	<button
 		mat-icon-button
@@ -32,5 +29,5 @@
 </ng-template>
 
 <ng-template #summ let-user>
-	{{user.summ | currency}}
+	{{ user.summ | currency }}
 </ng-template>

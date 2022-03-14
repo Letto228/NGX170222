@@ -34,14 +34,11 @@ export class NavbarComponent implements OnInit, OnDestroy {
 
 	ngOnInit() {
 		interval(2000)
-			.pipe(
-				mapTo('Magomed'),
-				takeUntil(this.destroy$),
-			)
-			.subscribe(name => {
+			.pipe(mapTo('Magomed'), takeUntil(this.destroy$))
+			.subscribe((name) => {
 				this.user.name = name;
 				this.changeDetactionRef.markForCheck();
-			})
+			});
 	}
 
 	toggleNavbar() {

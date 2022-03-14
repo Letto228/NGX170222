@@ -37,7 +37,7 @@ export class HeaderComponent implements OnInit {
 				summ: 1000,
 				format: 'RUB',
 			})),
-		)
+		);
 	}
 
 	toJSON(user: Object): string {
