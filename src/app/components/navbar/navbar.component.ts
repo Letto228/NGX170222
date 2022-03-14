@@ -1,15 +1,15 @@
 import {
-	AfterViewChecked,
 	ChangeDetectionStrategy,
+	ChangeDetectorRef,
 	Component,
 	ContentChild,
-	Input,
+	OnDestroy,
 	OnInit,
 	TemplateRef,
 	ViewChild,
-	ViewContainerRef,
 } from '@angular/core';
 import { MatDrawer } from '@angular/material/sidenav';
+import { interval, mapTo, Subject, takeUntil } from 'rxjs';
 
 @Component({
 	selector: 'ngx-classwork-navbar',
@@ -17,33 +17,40 @@ import { MatDrawer } from '@angular/material/sidenav';
 	styleUrls: ['./navbar.component.css'],
 	changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class NavbarComponent implements OnInit, AfterViewChecked {
-	@Input() navTitle!: string;
-	@Input() navCaption: string = '';
-
-	@ViewChild('matListViewPort', { static: true, read: ViewContainerRef })
-	matListViewPort!: ViewContainerRef;
+export class NavbarComponent implements OnInit, OnDestroy {
 	@ViewChild('drawer', { static: true, read: MatDrawer })
-	drawer!: MatDrawer;
+	private drawer!: MatDrawer;
 
 	@ContentChild('matListTemplate', { static: true, read: TemplateRef })
 	matListTemplate!: TemplateRef<unknown>;
 
-	// constructor(private changeDetactionRef: ChangeDetectorRef) {}
+	private destroy$ = new Subject<void>();
+
+	constructor(private changeDetactionRef: ChangeDetectorRef) {}
 
 	user = {
 		name: 'Egor',
 	};
 
 	ngOnInit() {
-		setTimeout(() => {
-			this.user.name = 'Magomed';
-			console.log(this.user.name);
-		}, 1000);
-		this.matListViewPort.createEmbeddedView(this.matListTemplate);
+		interval(2000)
+			.pipe(
+				mapTo('Magomed'),
+				takeUntil(this.destroy$),
+			)
+			.subscribe(name => {
+				this.user.name = name;
+				this.changeDetactionRef.markForCheck();
+			})
 	}
 
-	ngAfterViewChecked(): void {
-		console.log('ngAfterViewChecked Navbar');
+	toggleNavbar() {
+		this.drawer.toggle();
+		this.changeDetactionRef.markForCheck();
+	}
+
+	ngOnDestroy(): void {
+		this.destroy$.next();
+		this.destroy$.complete();
 	}
 }

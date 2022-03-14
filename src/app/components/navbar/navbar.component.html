@@ -1,12 +1,11 @@
 <mat-drawer-container class="example-container" autosize>
 	<mat-drawer #drawer class="example-sidenav" mode="side">
-		<div #matListViewPort></div>
+		<ng-container *ngIf="true">
+			<ng-container *ngTemplateOutlet="matListTemplate"></ng-container>
+		</ng-container>
 	</mat-drawer>
 
 	<div class="example-sidenav-content">
 		<ng-content></ng-content>
-		<button type="button" mat-button (click)="drawer.toggle()">
-			{{ user.name }}
-		</button>
 	</div>
 </mat-drawer-container>

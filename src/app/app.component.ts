@@ -1,4 +1,4 @@
-import { AfterViewChecked, Component, OnInit, ViewChild } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { NavbarComponent } from './components/navbar/navbar.component';
 
 @Component({
@@ -6,7 +6,7 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 	templateUrl: './app.component.html',
 	styleUrls: ['./app.component.css'],
 })
-export class AppComponent implements OnInit, AfterViewChecked {
+export class AppComponent {
 	user: string = '';
 	navCaption = '';
 
@@ -14,21 +14,10 @@ export class AppComponent implements OnInit, AfterViewChecked {
 	navbarComponent!: NavbarComponent;
 
 	onMenuToggle() {
-		this.navbarComponent.drawer.toggle();
+		this.navbarComponent.toggleNavbar();
 	}
 
 	onInput(element: Event) {
 		this.user = (element.target as HTMLInputElement).value;
-	}
-
-	ngOnInit() {
-		setTimeout(() => {
-			this.navCaption = 'Title';
-			console.log(this.navCaption);
-		}, 2000);
-	}
-
-	ngAfterViewChecked(): void {
-		console.log('ngAfterViewChecked App');
 	}
 }

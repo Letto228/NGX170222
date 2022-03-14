@@ -9,6 +9,12 @@
 	</button>
 	<span>App</span>
 	<span class="example-spacer"></span>
+
+	<div
+		*ngxClassworkInsert="false; first summ; last spiner"
+	></div>
+
+
 	<button
 		mat-icon-button
 		class="example-icon favorite-icon"
@@ -20,3 +26,11 @@
 		<mat-icon>input</mat-icon>
 	</button>
 </mat-toolbar>
+
+<ng-template #spiner>
+	<mat-spinner color="accent" [diameter]="20"></mat-spinner>
+</ng-template>
+
+<ng-template #summ let-user>
+	{{user.summ | currency}}
+</ng-template>
