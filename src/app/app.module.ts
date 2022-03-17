@@ -15,6 +15,12 @@ import { MatListModule } from '@angular/material/list';
 import { JsonPipe } from './pipes/json.pipe';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { InsertDirective } from './directives/insert.directive';
+import { CarouselDirective } from './directives/carousel.directive';
+import { LetDirective } from './directives/let.directive';
+import { MarginTopDirective } from './directives/margin-top.directive';
+import { CardComponent } from './components/card/card.component';
+import { MatCardModule } from '@angular/material/card';
+import { ProdictsFilterPipe } from './pipes/prodicts-filter.pipe';
 
 //@ts-ignore
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -28,7 +34,18 @@ const baseURL = environment.baseUrl;
  */
 
 @NgModule({
-	declarations: [AppComponent, HeaderComponent, NavbarComponent, JsonPipe, InsertDirective],
+	declarations: [
+		AppComponent,
+		HeaderComponent,
+		NavbarComponent,
+		JsonPipe,
+		InsertDirective,
+		CarouselDirective,
+		LetDirective,
+		MarginTopDirective,
+		CardComponent,
+		ProdictsFilterPipe,
+	],
 	imports: [
 		BrowserModule,
 		BrowserAnimationsModule,
@@ -39,6 +56,7 @@ const baseURL = environment.baseUrl;
 		MatSidenavModule,
 		MatListModule,
 		MatProgressSpinnerModule,
+		MatCardModule,
 	],
 	bootstrap: [AppComponent],
 })

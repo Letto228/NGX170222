@@ -7,8 +7,15 @@
 			<mat-list-item role="listitem">Item 3</mat-list-item>
 		</mat-list>
 	</ng-template>
+
 	<mat-form-field class="example-full-width" appearance="fill">
 		<mat-label>Search</mat-label>
 		<input matInput (input)="onInput($event)" />
 	</mat-form-field>
+	<div class="card-container">
+		<ngx-classwork-card
+			*ngFor="let product of products | prodictsFilter: searchText"
+			[product]="product"
+		></ngx-classwork-card>
+	</div>
 </ngx-classwork-navbar>
