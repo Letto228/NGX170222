@@ -9,27 +9,10 @@
 	</button>
 	<span>App</span>
 	<span class="example-spacer"></span>
-
-	<!-- <ng-template
-		ngxClassworkCarousel
-		[ngxClassworkCarouselOf]="user.shopSum"
-		let-back="back"
-		let-next="next"
-		let-sum
-	>
-		<div class="shop-container">
-			<mat-icon class="chevron" (click)="back()">chevron_left</mat-icon>
-			<p>
-				{{sum.value | currency : sum.format : 'symbol-narrow'}}
-			</p>
-			<mat-icon class="chevron" (click)="next()">chevron_right</mat-icon>
-		</div>
-	</ng-template> -->
-
 	<ng-container *ngIf="user$ | async as user; else spiner">
 		<p>{{ user?.name }} :</p>
 		<div
-			*ngxClassworkCarousel="let sum of user?.shopSum; next as next; back as back"
+			*ngxClassworkCarousel="let sum of user?.bascketValue; next as next; back as back"
 			class="shop-container"
 		>
 			<mat-icon class="chevron" (click)="back()">chevron_left</mat-icon>

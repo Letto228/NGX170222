@@ -1,6 +1,6 @@
 import { IProduct } from '../interface/product';
 
-export const products: IProduct[] = [
+export const productsMock: IProduct[] = [
 	{
 		id: '7-detskij-planset-dexp-ursus-l370i-kids-16-gb-3g-rozovyj',
 		feedbacksCount: 3,

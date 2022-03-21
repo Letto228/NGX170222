@@ -12,37 +12,29 @@ import { MatInputModule } from '@angular/material/input';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
-import { JsonPipe } from './pipes/json.pipe';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
-import { InsertDirective } from './directives/insert.directive';
 import { CarouselDirective } from './directives/carousel.directive';
 import { LetDirective } from './directives/let.directive';
-import { MarginTopDirective } from './directives/margin-top.directive';
 import { CardComponent } from './components/card/card.component';
 import { MatCardModule } from '@angular/material/card';
 import { ProdictsFilterPipe } from './pipes/prodicts-filter.pipe';
+import { UserService } from './services/user.service';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { ProductsService } from './services/products.service';
+import { BaseInterceptor } from './services/base.interceptor';
+import { ErrorInterceptor } from './services/error.interceptor';
 
 //@ts-ignore
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 const baseURL = environment.baseUrl;
-
-/**
- *  NgModule => es6
- *  declarations => let/const
- *  imports => import
- *  exports = export
- */
 
 @NgModule({
 	declarations: [
 		AppComponent,
 		HeaderComponent,
 		NavbarComponent,
-		JsonPipe,
-		InsertDirective,
 		CarouselDirective,
 		LetDirective,
-		MarginTopDirective,
 		CardComponent,
 		ProdictsFilterPipe,
 	],
@@ -57,6 +49,21 @@ const baseURL = environment.baseUrl;
 		MatListModule,
 		MatProgressSpinnerModule,
 		MatCardModule,
+		HttpClientModule,
+	],
+	providers: [
+		UserService,
+		ProductsService,
+		{
+			provide: HTTP_INTERCEPTORS,
+			useClass: BaseInterceptor,
+			multi: true,
+		},
+		{
+			provide: HTTP_INTERCEPTORS,
+			useClass: ErrorInterceptor,
+			multi: true,
+		},
 	],
 	bootstrap: [AppComponent],
 })

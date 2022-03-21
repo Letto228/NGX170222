@@ -13,9 +13,15 @@
 		<input matInput (input)="onInput($event)" />
 	</mat-form-field>
 	<div class="card-container">
-		<ngx-classwork-card
-			*ngFor="let product of products | prodictsFilter: searchText"
-			[product]="product"
-		></ngx-classwork-card>
+		<ng-container *ngIf="products$ | async as products; else spiner">
+			<ngx-classwork-card
+				*ngFor="let product of products | prodictsFilter: searchText"
+				[product]="product"
+			></ngx-classwork-card>
+		</ng-container>
 	</div>
 </ngx-classwork-navbar>
+
+<ng-template #spiner>
+	<mat-spinner color="accent" [diameter]="20"></mat-spinner>
+</ng-template>
