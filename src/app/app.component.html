@@ -1,27 +1,4 @@
 <ngx-classwork-header (clickMenu)="onMenuToggle()"></ngx-classwork-header>
 <ngx-classwork-navbar>
-	<ng-template #matListTemplate>
-		<mat-list role="list">
-			<mat-list-item role="listitem">Item 1</mat-list-item>
-			<mat-list-item role="listitem">Item 2</mat-list-item>
-			<mat-list-item role="listitem">Item 3</mat-list-item>
-		</mat-list>
-	</ng-template>
-
-	<mat-form-field class="example-full-width" appearance="fill">
-		<mat-label>Search</mat-label>
-		<input matInput (input)="onInput($event)" />
-	</mat-form-field>
-	<div class="card-container">
-		<ng-container *ngIf="products$ | async as products; else spiner">
-			<ngx-classwork-card
-				*ngFor="let product of products | prodictsFilter: searchText"
-				[product]="product"
-			></ngx-classwork-card>
-		</ng-container>
-	</div>
+	<router-outlet></router-outlet>
 </ngx-classwork-navbar>
-
-<ng-template #spiner>
-	<mat-spinner color="accent" [diameter]="20"></mat-spinner>
-</ng-template>

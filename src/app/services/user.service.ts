@@ -3,7 +3,9 @@ import { Injectable } from '@angular/core';
 import { map, Observable } from 'rxjs';
 import { IUser } from '../interface/user';
 
-@Injectable()
+@Injectable({
+	providedIn: 'root',
+})
 export class UserService {
 	constructor(private http: HttpClient) {}
 
