@@ -1,6 +1,7 @@
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { Observable } from 'rxjs';
 import { IProduct } from 'src/app/interface/product';
+import { BasketService } from 'src/app/services/basket.service';
 import { ProductsService } from 'src/app/services/products.service';
 
 @Component({
@@ -14,7 +15,7 @@ export class ProductsListComponent implements OnInit {
 
 	products$!: Observable<IProduct[]>;
 
-	constructor(private productsService: ProductsService) {}
+	constructor(private productsService: ProductsService, private basketService: BasketService) {}
 
 	ngOnInit(): void {
 		this.products$ = this.productsService.getProducts$();
@@ -22,5 +23,9 @@ export class ProductsListComponent implements OnInit {
 
 	onInput(element: Event) {
 		this.searchText = (element.target as HTMLInputElement).value;
+	}
+
+	addProduct(product: IProduct) {
+		this.basketService.addProductToBasket(product);
 	}
 }

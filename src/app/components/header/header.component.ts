@@ -12,7 +12,7 @@ import { UserService } from 'src/app/services/user.service';
 export class HeaderComponent implements OnInit {
 	@Output() clickMenu = new EventEmitter<void>();
 
-	user$!: Observable<IUser>;
+	user$!: Observable<IUser | null>;
 
 	constructor(private userService: UserService) {}
 

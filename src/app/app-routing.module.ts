@@ -1,9 +1,10 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { NotFoundComponent } from './pages/not-found/not-found.component';
 
 const routes: Routes = [
 	{
-		path: '',
+		path: 'products-list',
 		loadChildren: () =>
 			import('./pages/products-list/products-list.module').then((m) => m.ProductsListModule),
 	},
@@ -12,8 +13,17 @@ const routes: Routes = [
 		loadChildren: () => import('./pages/product/product.module').then((m) => m.ProductModule),
 	},
 	{
+		path: 'basket',
+		loadChildren: () => import('./pages/basket/basket.module').then((m) => m.BasketModule),
+	},
+	{
+		path: '',
+		redirectTo: '/products-list',
+		pathMatch: 'full',
+	},
+	{
 		path: '**',
-		redirectTo: '',
+		component: NotFoundComponent,
 	},
 ];
 

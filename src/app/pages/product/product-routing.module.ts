@@ -4,7 +4,7 @@ import { ProductComponent } from './product.component';
 
 const routes: Routes = [
 	{
-		path: ':id',
+		path: ':id', // http://localhost:4200/product/:id
 		component: ProductComponent,
 	},
 ];

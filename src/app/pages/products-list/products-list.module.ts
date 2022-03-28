@@ -8,6 +8,7 @@ import { MatCardModule } from '@angular/material/card';
 import { CardComponent } from './card/card.component';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { PipesModule } from 'src/app/pipes/pipes.module';
+import { MatButtonModule } from '@angular/material/button';
 
 @NgModule({
 	declarations: [ProductsListComponent, CardComponent],
@@ -19,6 +20,7 @@ import { PipesModule } from 'src/app/pipes/pipes.module';
 		MatCardModule,
 		MatProgressSpinnerModule,
 		PipesModule,
+		MatButtonModule,
 	],
 })
 export class ProductsListModule {}

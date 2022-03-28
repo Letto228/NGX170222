@@ -18,6 +18,7 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { BaseInterceptor } from './services/base.interceptor';
 import { ErrorInterceptor } from './services/error.interceptor';
 import { AppRoutingModule } from './app-routing.module';
+import { NotFoundModule } from './pages/not-found/not-found.module';
 
 //@ts-ignore
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -36,6 +37,7 @@ const baseURL = environment.baseUrl;
 		MatProgressSpinnerModule,
 		HttpClientModule,
 		AppRoutingModule,
+		NotFoundModule,
 	],
 	providers: [
 		{

@@ -1,0 +1,6 @@
+<mat-list role="list">
+    <mat-list-item *ngFor="let product of (basket$ | async)" role="listitem">
+        <img class="fix-size" [src]="product.images[0]?.url">
+        <p>{{product.name}}</p>
+    </mat-list-item>
+</mat-list>

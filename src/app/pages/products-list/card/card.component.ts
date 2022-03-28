@@ -1,4 +1,4 @@
-import { Component, ChangeDetectionStrategy, Input } from '@angular/core';
+import { Component, ChangeDetectionStrategy, Input, Output, EventEmitter } from '@angular/core';
 import { IProduct } from 'src/app/interface/product';
 
 @Component({
@@ -9,4 +9,10 @@ import { IProduct } from 'src/app/interface/product';
 })
 export class CardComponent {
 	@Input() product!: IProduct;
+	@Output() addToBasket = new EventEmitter<IProduct>();
+
+	onAddToBasket(event: Event) {
+		event.stopPropagation();
+		this.addToBasket.emit(this.product);
+	}
 }

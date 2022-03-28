@@ -7,7 +7,7 @@ export class BaseInterceptor implements HttpInterceptor {
 	intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
 		return next.handle(
 			request.clone({
-				url: `https://490a72df-5591-4218-972e-dd480151f9c6.mock.pstmn.io${request.url}`,
+				url: `http://localhost:3000${request.url}`,
 			}),
 		);
 	}
