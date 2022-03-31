@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { AuthGuard } from 'src/app/guards/auth.guard';
 import { LeaveGuard } from 'src/app/guards/leave.guard';
 import { AddressComponent } from './address/address.component';
 import { BasketListComponent } from './basket-list/basket-list.component';
@@ -18,7 +17,6 @@ const routes: Routes = [
 			{
 				path: 'address',
 				component: AddressComponent,
-				canActivate: [AuthGuard],
 				canDeactivate: [LeaveGuard],
 				data: {
 					isAuth: true,

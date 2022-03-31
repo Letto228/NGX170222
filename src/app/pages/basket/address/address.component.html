@@ -1,1 +1,24 @@
-<p>address works!</p>
+<form #ngForm="ngForm" (ngSubmit)="onLog(ngForm)">
+    <div>
+        <label>contry</label>
+        <input [ngModel]="address.contry" name="contry">
+    </div>
+    <div>
+        <label>street</label>
+        <input ngModel name="street">
+    </div>
+    <div ngModelGroup="homeInfo">
+        <div>
+            <label>block</label>
+            <input ngModel name="block">
+        </div>
+        <div>
+            <label>number</label>
+            <input ngModel name="number">
+        </div>
+    </div>
+
+    <input type="submit">
+</form>
+
+<!-- ngModel - exportAs: 'ngModel' -->
