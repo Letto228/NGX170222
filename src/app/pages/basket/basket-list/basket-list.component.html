@@ -1,6 +1,16 @@
-<mat-list role="list">
-    <mat-list-item *ngFor="let product of (basket$ | async)" role="listitem">
-        <img class="fix-size" [src]="product.images[0]?.url">
-        <p>{{product.name}}</p>
-    </mat-list-item>
-</mat-list>
+<form [formGroup]="form">
+    <mat-list role="list" formArrayName="counters">
+        <mat-list-item *ngFor="let product of (basket$ | async); index as index" role="listitem">
+            <img class="fix-size" [src]="product.images[0]?.url">
+            <p>{{product.name}}</p>
+            <!-- <input type="number" matInput [formControlName]="index"/> -->
+            <ngx-classwork-counter-input
+                [formControlName]="index"
+                [increment]="index + 1"
+            ></ngx-classwork-counter-input>
+            {{form.get(['counters', index])?.errors | json}}
+        </mat-list-item>
+    </mat-list>
+</form>
+
+<ngx-classwork-counter-input [ngModel]="model"></ngx-classwork-counter-input>

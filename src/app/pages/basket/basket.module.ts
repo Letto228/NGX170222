@@ -10,6 +10,8 @@ import { MatListModule } from '@angular/material/list';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { IsStringModule } from 'src/app/directives/is-string/is-string.module';
 import { IsStringAsyncModule } from 'src/app/directives/is-string-async/is-string-async.module';
+import { MatInputModule } from '@angular/material/input';
+import { CounterInputModule } from 'src/app/components/counter-input/counter-input.module';
 
 @NgModule({
 	declarations: [BasketComponent, BasketListComponent, AddressComponent],
@@ -22,6 +24,8 @@ import { IsStringAsyncModule } from 'src/app/directives/is-string-async/is-strin
 		ReactiveFormsModule,
 		IsStringModule,
 		IsStringAsyncModule,
+		MatInputModule,
+		CounterInputModule,
 	],
 })
 export class BasketModule {}

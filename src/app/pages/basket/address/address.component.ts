@@ -1,5 +1,5 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core';
-import { NgForm } from '@angular/forms';
+import { FormBuilder, Validators } from '@angular/forms';
 
 @Component({
 	selector: 'ngx-classwork-address',
@@ -8,16 +8,19 @@ import { NgForm } from '@angular/forms';
 	changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AddressComponent {
-	address = {
-		contry: 'USA',
-		street: '',
-		homeInfo: {
-			number: '',
-			block: '',
-		},
-	};
+	form = this.formBuilder.group({
+		contry: ['USA', [Validators.required]],
+		street: [{ value: 'street', disabled: true }],
+		homeInfo: this.formBuilder.group({
+			number: 10,
+			block: null,
+		}),
+	});
 
-	onLog(ngForm: NgForm) {
-		console.log(ngForm.value);
+	constructor(private formBuilder: FormBuilder) {}
+
+	onPush() {
+		console.log(this.form.value);
+		console.log(this.form.getRawValue());
 	}
 }
