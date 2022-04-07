@@ -12,7 +12,7 @@ import { BasketService } from 'src/app/services/basket.service';
 })
 export class BasketListComponent implements OnInit {
 	basket$: Observable<IProduct[]> = this.basketService.basket$.pipe(
-		tap(basket => {
+		tap((basket) => {
 			this.form.setControl(
 				'counters',
 				this.formBuilder.array(

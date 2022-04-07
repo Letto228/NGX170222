@@ -1,23 +1,29 @@
-import { createFeatureSelector, createReducer, on } from "@ngrx/store";
-import { resetProducts, setProducts, updateProductsCount } from "../actions/products.actions";
-import { IProductsState, productsEntityAdapter, productsInitialState } from "../state/products.state";
+import { createFeatureSelector, createReducer, on } from '@ngrx/store';
+import { resetProducts, setProducts, updateProductsCount } from '../actions/products.actions';
+import {
+	IProductsState,
+	productsEntityAdapter,
+	productsInitialState,
+} from '../state/products.state';
 
 export const PRODUCTS_FEATURE = 'products';
 
 export const productsReducer = createReducer<IProductsState>(
-    productsInitialState,
-    on(setProducts, (state, {products}) => productsEntityAdapter.upsertMany(products, state)),
-    on(resetProducts, (state) => productsEntityAdapter.removeAll(state)),
-    on(updateProductsCount, (state, {id, count}) => productsEntityAdapter.updateOne(
-        {
-            id,
-            changes: {
-                count,
-            }
-        },
-        state
-    )),
-)
+	productsInitialState,
+	on(setProducts, (state, { products }) => productsEntityAdapter.upsertMany(products, state)),
+	on(resetProducts, (state) => productsEntityAdapter.removeAll(state)),
+	on(updateProductsCount, (state, { id, count }) =>
+		productsEntityAdapter.updateOne(
+			{
+				id,
+				changes: {
+					count,
+				},
+			},
+			state,
+		),
+	),
+);
 
 export const productsFeatureSelector = createFeatureSelector<IProductsState>(PRODUCTS_FEATURE);
 
@@ -37,9 +43,9 @@ export const productsFeatureSelector = createFeatureSelector<IProductsState>(PRO
 // )
 
 export const {
-    selectAll: getProducts,
-    selectIds: getProductsIds,
-    selectEntities: getProductsEntities,
+	selectAll: getProducts,
+	selectIds: getProductsIds,
+	selectEntities: getProductsEntities,
 } = productsEntityAdapter.getSelectors(productsFeatureSelector);
 
 // export const getProduct = createSelector(

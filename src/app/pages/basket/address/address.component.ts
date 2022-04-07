@@ -16,7 +16,7 @@ import { IAddressState } from 'src/app/store/state/address.state';
 export class AddressComponent {
 	address$: Observable<IAddressState> = this.store.pipe(
 		select(addressFeatureSelector),
-		tap(address => {
+		tap((address) => {
 			this.form.setValue(address);
 		}),
 	);
@@ -29,10 +29,7 @@ export class AddressComponent {
 		}),
 	});
 
-	constructor(
-		private formBuilder: FormBuilder,
-		private store: Store<IState>,
-	) {}
+	constructor(private formBuilder: FormBuilder, private store: Store<IState>) {}
 
 	onPush() {
 		this.store.dispatch(addAddress(this.form.getRawValue()));
