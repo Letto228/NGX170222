@@ -22,7 +22,14 @@
         </div>
     </div>
 
-    <input type="submit" (click)="onPush()">
+    <!-- <input type="submit" (click)="onPush()"> -->
 </form>
+
+<button (click)="onPush()">Push</button>
+<button (click)="onReset()">Reset</button>
+
+{{
+    address$ | async | json
+}}
 
 <!-- ngModel - exportAs: 'ngModel' -->

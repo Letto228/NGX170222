@@ -19,6 +19,8 @@ import { BaseInterceptor } from './services/base.interceptor';
 import { ErrorInterceptor } from './services/error.interceptor';
 import { AppRoutingModule } from './app-routing.module';
 import { NotFoundModule } from './pages/not-found/not-found.module';
+import { StoreModule } from '@ngrx/store';
+import { reducers } from './store/reducers';
 
 //@ts-ignore
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -38,6 +40,7 @@ const baseURL = environment.baseUrl;
 		HttpClientModule,
 		AppRoutingModule,
 		NotFoundModule,
+		StoreModule.forRoot(reducers),
 	],
 	providers: [
 		{

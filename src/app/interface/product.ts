@@ -10,4 +10,5 @@ export interface IProduct {
 	}[];
 	rating: number;
 	status: number;
+	count: number;
 }
