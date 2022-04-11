@@ -21,10 +21,19 @@ import { AppRoutingModule } from './app-routing.module';
 import { NotFoundModule } from './pages/not-found/not-found.module';
 import { StoreModule } from '@ngrx/store';
 import { reducers } from './store/reducers';
+import { EffectsModule } from '@ngrx/effects';
+import { effects } from './store/effects';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 
 //@ts-ignore
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 const baseURL = environment.baseUrl;
+
+const storeDevtools = [];
+
+if (!environment.production) {
+	storeDevtools.push(StoreDevtoolsModule.instrument());
+}
 
 @NgModule({
 	declarations: [AppComponent, HeaderComponent, NavbarComponent, CarouselDirective, LetDirective],
@@ -41,6 +50,8 @@ const baseURL = environment.baseUrl;
 		AppRoutingModule,
 		NotFoundModule,
 		StoreModule.forRoot(reducers),
+		EffectsModule.forRoot(effects),
+		...storeDevtools,
 	],
 	providers: [
 		{

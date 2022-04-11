@@ -3,7 +3,7 @@ import { select, Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { IProduct } from 'src/app/interface/product';
 import { BasketService } from 'src/app/services/basket.service';
-import { ProductsStoreService } from 'src/app/services/products-store.service';
+import { loadProducts } from 'src/app/store/actions/products.actions';
 import { IState } from 'src/app/store/reducers';
 import { getProducts } from 'src/app/store/reducers/products.reducer';
 
@@ -19,16 +19,11 @@ export class ProductsListComponent implements OnInit {
 	products$!: Observable<IProduct[]>;
 	product$!: Observable<IProduct>;
 
-	constructor(
-		private productsStoreService: ProductsStoreService,
-		private basketService: BasketService,
-		private store: Store<IState>,
-	) {}
+	constructor(private basketService: BasketService, private store: Store<IState>) {}
 
 	ngOnInit(): void {
 		this.products$ = this.store.pipe(select(getProducts));
-		// this.product$ = this.store.pipe(select(getProduct, '1'))
-		this.productsStoreService.loadProducts();
+		this.store.dispatch(loadProducts());
 	}
 
 	onInput(element: Event) {

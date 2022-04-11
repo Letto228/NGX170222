@@ -7,7 +7,7 @@ import { productsReducer, PRODUCTS_FEATURE } from './products.reducer';
 export interface IState {
 	[ADDRESS_FEATURE]: IAddressState;
 	[PRODUCTS_FEATURE]: IProductsState;
-} // {address: IAddressState}
+}
 
 export const reducers: ActionReducerMap<IState> = {
 	[ADDRESS_FEATURE]: addressReducer,
