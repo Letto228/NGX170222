@@ -28,13 +28,12 @@ describe('ProductsListComponent', () => {
 
 	beforeEach(() => {
 		mockStore = TestBed.inject(MockStore);
+		dispatchSpy = spyOn(mockStore, 'dispatch');
 
 		mockStore.overrideSelector(
 			getProducts as MemoizedSelector<IState, IProduct[]>,
 			productsMock,
 		);
-
-		dispatchSpy = spyOn(mockStore, 'dispatch');
 
 		fixture = TestBed.createComponent(ProductsListComponent);
 		component = fixture.componentInstance;

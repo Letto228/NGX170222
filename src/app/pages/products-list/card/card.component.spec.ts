@@ -1,8 +1,8 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { MatCardModule } from '@angular/material/card';
 import { By } from '@angular/platform-browser';
 import { IProduct } from 'src/app/interface/product';
 import { productsMock } from 'src/app/mocks/products.mock';
+import { ProductsListModule } from '../products-list.module';
 
 import { CardComponent } from './card.component';
 
@@ -25,11 +25,7 @@ describe('CardComponent unit', () => {
 	beforeEach(() => {
 		fixture = TestBed.createComponent(CardComponent);
 		component = fixture.componentInstance;
-		fixture.detectChanges();
-
 		component.product = productsMock[0] as IProduct;
-
-		fixture.detectChanges();
 	});
 
 	it('Выбор продукта spy', () => {
@@ -55,8 +51,9 @@ describe('CardComponent integration', () => {
 
 	beforeEach(async () => {
 		await TestBed.configureTestingModule({
-			declarations: [CardComponent],
-			imports: [MatCardModule],
+			// declarations: [CardComponent],
+			// imports: [MatCardModule],
+			imports: [ProductsListModule],
 		}).compileComponents();
 	});
 
@@ -80,12 +77,4 @@ describe('CardComponent integration', () => {
 			expect(product).toEqual(productsMock[0] as IProduct);
 		});
 	});
-
-	// it('Выбор продукта subscribe', () => {
-	// 	component.addToBasket.subscribe(product => {
-	// 		expect(product).toEqual(productsMock[0] as IProduct);
-	// 	})
-
-	// 	component.onAddToBasket(new Event(''));
-	// });
 });

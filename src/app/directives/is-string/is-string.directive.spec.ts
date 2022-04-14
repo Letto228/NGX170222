@@ -2,12 +2,15 @@ import { FormControl } from '@angular/forms';
 import { IsStringDirective } from './is-string.directive';
 
 describe('IsStringDirective', () => {
-	it('should create an instance', () => {
-		const directive = new IsStringDirective();
+	const directive = new IsStringDirective();
 
-		expect(directive).toBeTruthy();
+	it('is number', () => {
 		expect(directive.validate(new FormControl(123))).toEqual({
 			ngxClassworkIsString: 'is not string',
 		});
+	});
+
+	it('is string', () => {
+		expect(directive.validate(new FormControl('string'))).toEqual(null);
 	});
 });
